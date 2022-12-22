@@ -52,7 +52,10 @@
                         <div class="flex-box">
                             <a type="button" style="color: #fff; " href="{{url('update_news/'.$n->id)}}" class="btn btn-warning">Edit</a>
                             {{-- <button type="button" class="btn btn-primary">Restore</button> --}}
-                            <a type="button" style="color: #fff; " class="btn btn-danger" href="{{url('softdelete/'.$n->id)}}">Delete</a>
+                            {{-- <a type="button" style="color: #fff; " class="btn btn-danger" href="{{url('softdelete/'.$n->id)}}">Delete</a> --}}
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                              Delete
+                            </button>
                         </div>
                     </td>
                   </tr>
@@ -125,6 +128,32 @@
       {{$trashnews->links()}}
       {{-- <a href="add_news" class="btn btn-success">Add News</a> --}}
   </div>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a type="button" style="color: #fff; " class="btn btn-danger" href="{{url('softdelete/'.$n->id)}}">Delete</a> 
+      </div>
+    </div>
+  </div>
+</div>
 
   
     
