@@ -96,7 +96,8 @@ $( document ).ready(function() {
                 
                  
                   getdata = data;
-                  console.log(getdata.news[0].id)
+                  console.log(getdata.news[0])
+                  /* console.log(getdata.news[0].id) */
 
                   for(let i = 0; i < getdata.news.length; i++){
 
@@ -126,13 +127,32 @@ $( document ).ready(function() {
                url:'/ajax_call',
                data:'_token = <?php echo csrf_token() ?>',
                success:function(data) {
+
+                $("#body-table tr").remove();
                  
                   getdata = data;
                   console.log(getdata.news)
 
+                  for(let i = 0; i < getdata.news.length; i++){
+
+$('#body-table').append(
+  `
+<tr>
+
+<td>${getdata.news[i].title}</td>
+<td><p>${getdata.news[i].content}</p></td>
+</tr>
+
+
+`
+)
+
+
+}
+
                   /* for(let i = 0, ) */
 
-                $('#body-table tr:first-child').remove()
+               /*  $('#body-table tr:first-child').remove() */
 
                }
             });
