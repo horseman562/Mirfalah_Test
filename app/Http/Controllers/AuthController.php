@@ -13,7 +13,11 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        if (!isset(session()->all()['loginId'])) {
+            return view('auth.login');
+        } else {
+            return redirect('dashboard');
+        }
     }
 
     public function loginUser(Request $request)
